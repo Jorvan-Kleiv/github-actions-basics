@@ -35,3 +35,21 @@ jobs:
             ORGANIZATION: ${{ github.event.organization.login }}
             REPOSITORY: ${{ github.event.repository.name }}
             ISSUE_NUMBER: ${{ github.event.issue.number }} 
+  
+  test-env-values:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Debug variables
+        run: |
+          echo "Org: $ORGANIZATION"
+          echo "Repo: $REPOSITORY"
+          echo "Issue: $ISSUE_NUMBER"
+          echo "Token: $GITHUB_TOKEN"
+          echo "Full URL: https://api.github.com/repos/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
+        shell: bash
+        env:
+          ORGANIZATION: ${{ github.event.organization.login }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
