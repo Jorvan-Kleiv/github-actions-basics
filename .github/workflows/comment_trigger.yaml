@@ -33,7 +33,7 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ORGANIZATION: ${{ github.event.organization.login }}
-            REPOSITORY: ${{ github.event.repository.name }}
+            REPOSITORY: ${{ github.repository }}
             ISSUE_NUMBER: ${{ github.event.issue.number }} 
   
   test-env-values:
