@@ -26,9 +26,10 @@ jobs:
     steps:
       - name: Create comment with API
         run: |
-          gh api -X POST \
-            "https://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
-            -f body="This is a multi-line test comment\n- With GitHub **Markdown** :sparkles:\n- Created by the API"
+          curl -sSL -H "Authorization: token $GITHUB_TOKEN" \
+            -X POST \
+            -d '{"body":"This is a multi-line test comment\n- With GitHub **Markdown** :sparkles:\n- Created by the API"}' \
+            "https://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ORGANIZATION: ${{ github.event.organization.login }}
