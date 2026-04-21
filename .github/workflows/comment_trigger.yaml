@@ -29,7 +29,7 @@ jobs:
           curl -sSL -H "Authorization: token $GITHUB_TOKEN" \
             -X POST \
             -d '{"body":"This is a multi-line test comment\n- With GitHub **Markdown** :sparkles:\n- Created by API"}' \
-            "https://api.github.com/repos/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
+            "https://api.github.com/repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ORGANIZATION: ${{ github.event.organization.login }}
@@ -47,7 +47,7 @@ jobs:
           echo "Repo: $REPOSITORY"
           echo "Issue: $ISSUE_NUMBER"
           echo "Token: $GITHUB_TOKEN"
-          echo "Full URL: https://api.github.com/repos/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
+          echo "Full URL: https://api.github.com/repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
         shell: bash
         env:
           ORGANIZATION: ${{ github.event.organization.login }}
